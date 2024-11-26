@@ -4,8 +4,8 @@ plugins {
     `maven-publish`
     signing
     id("com.gradleup.nmcp").version("0.0.7")
-    kotlin("jvm") version "1.8.22"
-    kotlin("plugin.spring") version "1.8.22"
+    kotlin("jvm") version "1.9.25"
+    kotlin("plugin.spring") version "1.9.25"
 }
 
 val libVersion = app.boboc.Deps.websocketCoroutineVersion
@@ -13,7 +13,7 @@ val artifactName = "webflux-websocket-coroutine-extension"
 val groupName = app.boboc.Deps.groupName
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -23,7 +23,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation(project(":modules:webflux-websocket-coroutine"))
+    api(project(":modules:webflux-websocket-coroutine"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
 }
@@ -32,7 +32,7 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
 
