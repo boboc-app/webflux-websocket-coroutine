@@ -5,8 +5,8 @@ plugins {
     id("io.spring.dependency-management") version "1.1.4"
     signing
     id("com.gradleup.nmcp").version("0.0.7")
-    kotlin("jvm") version "1.8.22"
-    kotlin("plugin.spring") version "1.8.22"
+    kotlin("jvm") version "1.9.25"
+    kotlin("plugin.spring") version "1.9.25"
     `maven-publish`
 }
 
@@ -17,7 +17,7 @@ val artifactName = "webflux-websocket-coroutine"
 val groupName = app.boboc.Deps.groupName
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -35,7 +35,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
 }
 
@@ -61,7 +61,6 @@ val sourcesJar = tasks.register("sourcesJar", Jar::class) {
 }
 
 val deployJar = tasks.register("deployJar", Jar::class) {
-
     archiveClassifier = "sources"
     sourceSets["main"].allSource
     group = "deploy"
